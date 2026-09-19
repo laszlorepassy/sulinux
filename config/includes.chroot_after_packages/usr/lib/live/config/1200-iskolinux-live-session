@@ -44,9 +44,9 @@ Config ()
 		kw --file powerdevilrc --group "${_PROFIL}" --group SuspendAndShutdown --key AutoSuspendAction 0
 	done
 
-	# KDE üdvözlőközpont ki (a kded modul indítja; mindkét lehetséges modulnévre)
-	kw --file kdedrc --group Module-plasma-welcome --key autoload --type bool false
-	kw --file kdedrc --group Module-kded_plasma-welcome --key autoload --type bool false
+	# KDE üdvözlőközpont ki: akkor jelenik meg, ha a látott verzió eltér a mostanitól,
+	# ezért egy nagy verziószámot írunk be (a kded modul autoload=false-t figyelmen kívül hagyja)
+	kw --file plasma-welcomerc --group General --key LastSeenVersion 99.9.9
 
 	touch /var/lib/live/config/iskolinux-live-session
 }
