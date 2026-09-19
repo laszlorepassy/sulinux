@@ -411,20 +411,6 @@ csomagok törlése (hely felszabadítása vagy tiszta újrakezdés):
 docker volume rm iskolinux-build
 ```
 
-### Ha hibával leáll
-
-- A Docker nem fut: indítsd el a Docker Desktopot (Linuxon: `sudo systemctl start docker`).
-- Letöltési hiba (`Failed to fetch`, `Hash Sum mismatch`): átmeneti hálózati gond.
-  Futtasd újra a parancsot.
-- Elfogyott a hely (`No space left on device`): szabadíts fel helyet (Docker Desktopban a
-  *Settings → Resources* alatt növelhető a tárhely), majd `docker volume rm iskolinux-build`,
-  és futtasd újra a parancsot.
-- Egyéb hiba: az `out/build.log` fájl vége megmutatja az okát.
-
-> [!NOTE]
-> A tovább nem terjeszthető programok soha nem kerülnek az ISO-ba (ezeket telepítés után a
-> `sudo iskolinux-addons` tölti le), így az elkészült ISO szabadon terjeszthető.
-
 ## Pendrive készítése
 
 Az ISO kb. 3,3 GB. A pendrive-on lévő összes adat törlődik.
