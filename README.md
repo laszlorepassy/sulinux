@@ -98,9 +98,6 @@ Wi-Fi, a hang és a kijelző, mielőtt bármit módosítanál a gépen.
 
 ## Rendszerkövetelmény
 
-Az IskoLinux takarékosra állított KDE Plasma felületet használ, így a néhány éves iskolai és
-otthoni gépeken is jól fut.
-
 | | |
 |---|---|
 | Processzor | 64 bites Intel vagy AMD, legalább 2 mag |
