@@ -304,10 +304,6 @@ külön letölteni. Elég egyetlen gépet elkészíteni, majd a lemezét a több
 4. Töltsd rá a lemezképet a többi gépre. A Clonezilla Server Edition (vagy a DRBL) multicast
    módban, hálózati indítással (PXE) egyszerre az egész termet elkészíti: 20–30 gép nagyjából
    fél óra alatt.
-5. Adj minden gépnek egyedi gépnevet, hogy ne ütközzenek a hálózaton:
-   ```sh
-   sudo hostnamectl set-hostname terem12-gep05
-   ```
 
 A klónozás hasonló hardverű gépeknél működik a legjobban. Eltérő gépeknél (pl. otthoni
 laptopok) a pendrive-os telepítést használd.
