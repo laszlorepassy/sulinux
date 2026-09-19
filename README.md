@@ -453,8 +453,7 @@ mentést. A kézi mentést az `iskolinux-snapshot` szkript készíti – lásd
 
 A rendszer Debian marad a saját nevével és kinézetével; az IskoLinuxot az
 `/etc/iskolinux-release` fájl jelzi. A háttérkép a könyves logót, az
-*IskoLinux* feliratot és az építés dátumát mutatja; színei táblazöld (`#5cc3ae`) és krétasárga
-(`#f0c75e`), a háttér kockás füzetlapot idéz.
+*IskoLinux* feliratot és az építés dátumát mutatja.
 
 | Forrás | Hová kerül |
 |---|---|
