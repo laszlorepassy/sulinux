@@ -440,7 +440,7 @@ A pendrive-ról indítás és a telepítés lépései: [Kipróbálás és telep�
 
 ## Fájlrendszer: Btrfs
 
-A telepítő alapból Btrfs-t használ (`/etc/calamares/modules/partition.conf`, `mount.conf`):
+A telepítő Btrfs-t használ (`/etc/calamares/modules/partition.conf`, `mount.conf`):
 zstd-tömörítés, alkötetek (`@`, `@home`, `@cache`, `@log`), swap-partíció helyett zram. Ext4 és
 XFS a telepítőben továbbra is választható.
 
