@@ -79,8 +79,8 @@ done
 log "Rendszermentés: egy mentés a telepítés után (első induláskor), a többi csak kézzel"
 # Programtelepítéskor a snapper ne készítsen magától mentést.
 echo 'DISABLE_APT_SNAPSHOT="yes"' >> /etc/default/snapper
-# Indításkor sem (a snapper csomag alapból minden indításkor mentést készítene)
-systemctl disable snapper-boot.timer
+# Időzítve és indításkor sem (a snapper csomag alapból mindkettőt bekapcsolja)
+systemctl disable snapper-boot.timer snapper-timeline.timer
 systemctl enable iskolinux-snapshot-setup.service
 
 log "Kiadásinformáció (ellenőrzés: cat /etc/iskolinux-release)"
