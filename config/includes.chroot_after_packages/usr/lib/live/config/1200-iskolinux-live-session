@@ -1,0 +1,56 @@
+#!/bin/sh
+# IskoLinux: az élő rendszerben (csak ott) ne zárolódjon, ne sötétüljön el és ne aludjon el a
+# képernyő, mert a telepítés percekig tart, és közben a felhasználó nem tudja a jelszót; és ne
+# ugorjon fel a KDE üdvözlőközpontja.
+# A live-config futtatja minden élő indításkor; a telepített rendszerre nincs hatása.
+
+. /usr/lib/live/config.sh
+
+Cmdline ()
+{
+	for _PARAMETER in ${LIVE_CONFIG_CMDLINE}
+	do
+		case "${_PARAMETER}" in
+			live-config.username=*|username=*)
+				LIVE_USERNAME="${_PARAMETER#*username=}"
+				;;
+		esac
+	done
+}
+
+Init ()
+{
+	if [ ! -e /usr/bin/kwriteconfig6 ] || component_was_executed "iskolinux-live-session"
+	then
+		exit 0
+	fi
+
+	echo -n " iskolinux-live-session"
+}
+
+Config ()
+{
+	kw () { sudo -u "${LIVE_USERNAME}" kwriteconfig6 "$@"; }
+
+	# Képernyőzár ki
+	kw --file kscreenlockerrc --group Daemon --key Autolock --type bool false
+	kw --file kscreenlockerrc --group Daemon --key LockOnResume --type bool false
+
+	# Energiakezelés: nincs elsötétítés, képernyő-kikapcsolás és alvás (hálózatról és akkuról sem)
+	for _PROFIL in AC Battery LowBattery
+	do
+		kw --file powerdevilrc --group "${_PROFIL}" --group Display --key DimDisplayWhenIdle --type bool false
+		kw --file powerdevilrc --group "${_PROFIL}" --group Display --key TurnOffDisplayWhenIdle --type bool false
+		kw --file powerdevilrc --group "${_PROFIL}" --group SuspendAndShutdown --key AutoSuspendAction 0
+	done
+
+	# KDE üdvözlőközpont ki (a kded modul indítja; mindkét lehetséges modulnévre)
+	kw --file kdedrc --group Module-plasma-welcome --key autoload --type bool false
+	kw --file kdedrc --group Module-kded_plasma-welcome --key autoload --type bool false
+
+	touch /var/lib/live/config/iskolinux-live-session
+}
+
+Cmdline
+Init
+Config

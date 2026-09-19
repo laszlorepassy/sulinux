@@ -42,11 +42,7 @@ update-locale LANG=hu_HU.UTF-8 LANGUAGE=hu:en
 ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 echo Europe/Budapest > /etc/timezone
 
-# A telepítő (Calamares) alapértelmezett időzónája
-for f in /etc/calamares/modules/locale.conf /usr/share/calamares/modules/locale.conf; do
-    [ -f "$f" ] || continue
-    sed -i -E 's/^(\s*region:).*/\1 "Europe"/; s/^(\s*zone:).*/\1 "Budapest"/' "$f"
-done
+# A telepítő (Calamares) alapértelmezett időzónája: /etc/calamares/modules/locale.conf
 
 log "Takarékos KDE-alapbeállítások (minden felhasználónak, /etc/xdg)"
 kw() { kwriteconfig6 --file "/etc/xdg/$1" --group "$2" --key "$3" "$4"; }
@@ -54,8 +50,10 @@ kw baloofilerc "Basic Settings" "Indexing-Enabled" false   # fájlindexelés ki
 kw kwinrc Plugins blurEnabled false                        # elmosás ki
 kw kwinrc Plugins contrastEnabled false                    # háttér-kontraszt effekt ki
 kw kdeglobals KDE AnimationDurationFactor 0.5              # rövidebb animációk
-kw ksplashrc KSplash Theme None                            # nincs KDE-betöltőképernyő
 kw kdeglobals Translations LANGUAGE hu:en
+# A zárolóképernyőn is az IskoLinux háttérkép látszódjon
+kwriteconfig6 --file /etc/xdg/kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image \
+    --group General --key Image "file:///usr/share/wallpapers/IskoLinuxTabla/"
 
 log "Adatbázis- és webszerver ne induljon automatikusan (RAM-takarékosság)"
 systemctl disable mariadb.service apache2.service || true

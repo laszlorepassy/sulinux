@@ -1,7 +1,6 @@
 #!/bin/bash
 # Az IskoLinux háttérkép beállítása a felhasználónak (egyszer, első bejelentkezéskor).
-# Erről a háttérképről (IskoLinux felirat, építési dátum) ismerhető fel, hogy a gépen
-# IskoLinux fut; a rendszer többi része a Debian eredeti kinézetét tartja meg.
+# A rendszer többi része a Debian eredeti kinézetét tartja meg.
 # A Plasma alapértelmezéseit csak futó plasmashellen keresztül lehet megbízhatóan
 # módosítani, ezért automatikus indításból fut.
 MARKER="${XDG_CONFIG_HOME:-$HOME/.config}/iskolinux-branding-v1"
