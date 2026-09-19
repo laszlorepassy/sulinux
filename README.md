@@ -371,9 +371,7 @@ sudo snapper delete 5
 
 > [!WARNING]
 > A rendszermentés ugyanazon a lemezen van, mint maga a rendszer. Szoftveres hibák és
-> elállítások ellen véd, de ha a lemez tönkremegy, a mentés is elvész. A diákok munkáiról
-> külön is készíts biztonsági mentést (pendrive, hálózati tárhely), a teljes géptükörhöz
-> pedig használd a [Clonezillát](#egész-terem-telepítése).
+> elállítások ellen véd, de ha a lemez tönkremegy, a mentés is elvész.
 
 A rendszermentés csak akkor működik, ha a gépet az alapértelmezett Btrfs fájlrendszerrel
 telepítették. Ext4 vagy XFS esetén a program jelzi, hogy nem érhető el.
