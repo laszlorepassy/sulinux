@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Writes the final sources.list file
+#
+# IskoLinux: a Debian calamares-settings-debian szkriptje, de mind a négy összetevővel
+# (main contrib non-free non-free-firmware), mint amivel az ISO is készül. Az eredeti csak
+# main non-free-firmware összetevőt írt, így pl. a Microsoft-fontok (contrib) nem voltak
+# telepíthetők, és a non-free csomagok nem kaptak frissítést.
+
+CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+RELEASE="trixie"
+COMPONENTS="main contrib non-free non-free-firmware"
+
+cat << EOF2 > $CHROOT/etc/apt/sources.list
+# See https://wiki.debian.org/SourcesList for more information.
+deb http://deb.debian.org/debian $RELEASE $COMPONENTS
+deb-src http://deb.debian.org/debian $RELEASE $COMPONENTS
+
+deb http://deb.debian.org/debian $RELEASE-updates $COMPONENTS
+deb-src http://deb.debian.org/debian $RELEASE-updates $COMPONENTS
+
+deb http://security.debian.org/debian-security/ $RELEASE-security $COMPONENTS
+deb-src http://security.debian.org/debian-security/ $RELEASE-security $COMPONENTS
+
+# Backports allow you to install newer versions of software made available for this release
+deb http://deb.debian.org/debian $RELEASE-backports $COMPONENTS
+deb-src http://deb.debian.org/debian $RELEASE-backports $COMPONENTS
+EOF2
+
+exit 0

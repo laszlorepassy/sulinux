@@ -17,6 +17,8 @@ if [ ! -e /etc/snapper/configs/root ]; then
     systemctl disable --now snapper-timeline.timer 2>/dev/null || true
     systemctl enable --now snapper-cleanup.timer
 fi
+# Indításonkénti mentés sincs (a snapper csomag alapból bekapcsolja)
+systemctl disable --now snapper-boot.timer 2>/dev/null || true
 
 if ! snapper -c root list --columns description 2>/dev/null | grep -q "Telepítés utáni állapot"; then
     # Takarítási szabály nélkül: ezt a mentést a rendszer soha nem törli magától.
