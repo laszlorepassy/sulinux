@@ -460,7 +460,3 @@ A rendszer Debian marad a saját nevével és kinézetével; az IskoLinuxot az
 | `images/hatter-tabla.svg` | alapértelmezett asztali háttérkép (*IskoLinux – Tábla*) |
 | `images/hatter-fuzet.svg` | világos, választható háttérkép (*IskoLinux – Füzet*) |
 | `images/logo.svg` | a logó (ennek a README-nek a tetején) |
-
-Építéskor a `build.sh` bemásolja az SVG-ket a rendszer `/usr/share/iskolinux/branding/` mappájába,
-majd a hook a `@BUILD_DATE@` helyére beírja a dátumot, és több felbontású PNG-t készít az
-SVG-kből. A háttérképet első bejelentkezéskor a `/usr/local/libexec/iskolinux-branding` állítja be.
