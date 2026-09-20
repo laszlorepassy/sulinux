@@ -2,6 +2,6 @@
 Type=Application
 Name=Kiegészítők telepítése
 Comment=VS Code, PyCharm, Java-fejlesztőkörnyezetek, Microsoft-fontok letöltése (internet kell hozzá)
-Exec=konsole --hold -e /usr/local/sbin/iskolinux-addons
+Exec=konsole --hold -e /usr/local/sbin/sulinux-addons
 Icon=system-software-install
 Categories=System;Settings;

@@ -1,5 +1,5 @@
 #!/bin/sh
-# IskoLinux: az élő rendszerben (csak ott) ne zárolódjon, ne sötétüljön el és ne aludjon el a
+# Sulinux: az élő rendszerben (csak ott) ne zárolódjon, ne sötétüljön el és ne aludjon el a
 # képernyő, mert a telepítés percekig tart, és közben a felhasználó nem tudja a jelszót; és ne
 # ugorjon fel a KDE üdvözlőközpontja.
 # A live-config futtatja minden élő indításkor; a telepített rendszerre nincs hatása.
@@ -20,12 +20,12 @@ Cmdline ()
 
 Init ()
 {
-	if [ ! -e /usr/bin/kwriteconfig6 ] || component_was_executed "iskolinux-live-session"
+	if [ ! -e /usr/bin/kwriteconfig6 ] || component_was_executed "sulinux-live-session"
 	then
 		exit 0
 	fi
 
-	echo -n " iskolinux-live-session"
+	echo -n " sulinux-live-session"
 }
 
 Config ()
@@ -48,7 +48,7 @@ Config ()
 	# ezért egy nagy verziószámot írunk be (a kded modul autoload=false-t figyelmen kívül hagyja)
 	kw --file plasma-welcomerc --group General --key LastSeenVersion 99.9.9
 
-	touch /var/lib/live/config/iskolinux-live-session
+	touch /var/lib/live/config/sulinux-live-session
 }
 
 Cmdline

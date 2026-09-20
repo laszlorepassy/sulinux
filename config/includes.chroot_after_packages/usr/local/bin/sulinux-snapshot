@@ -1,6 +1,6 @@
 #!/bin/bash
 # Kézi rendszermentés (Btrfs-pillanatkép) készítése.
-# Használat: iskolinux-snapshot ["leírás"]
+# Használat: sulinux-snapshot ["leírás"]
 # Leírás nélkül grafikus felületen rákérdez, parancssorban az aktuális dátumot használja.
 set -euo pipefail
 
@@ -28,7 +28,7 @@ if [ "$(findmnt -no FSTYPE /)" != btrfs ]; then
     echo "A rendszermentés csak Btrfs fájlrendszeren működik (ez a gép nem azzal lett telepítve)." >&2
     exit 1
 fi
-[ -e /etc/snapper/configs/root ] || /usr/local/libexec/iskolinux-snapshot-setup
+[ -e /etc/snapper/configs/root ] || /usr/local/libexec/sulinux-snapshot-setup
 
 snapper -c root create --description "${leiras:-$alap}" --cleanup-algorithm number --userdata "manual=yes"
 echo "Kész: ${leiras:-$alap}"

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="images/logo.svg" width="112" alt="IskoLinux logó">
+  <img src="images/logo.svg" width="112" alt="Sulinux logó">
 </p>
 
-<h1 align="center">IskoLinux</h1>
+<h1 align="center">Sulinux</h1>
 
 <p align="center">
   Magyar nyelvű, Debian 13 alapú oktatási Linux KDE Plasma felülettel.<br>
@@ -20,7 +20,7 @@ Bevezetés
 - [Kipróbálás és telepítés](#kipróbálás-és-telepítés)
 - [Rendszerkövetelmény](#rendszerkövetelmény)
 - [Az asztal használata](#az-asztal-használata)
-- [Honnan tudom, hogy IskoLinux?](#honnan-tudom-hogy-iskolinux-van-a-gépen)
+- [Honnan tudom, hogy Sulinux?](#honnan-tudom-hogy-sulinux-van-a-gépen)
 
 Érettségi
 - [Microsoft Office-dokumentumok](#microsoft-office-dokumentumok)
@@ -61,7 +61,7 @@ többi pedig nagy, és nem minden gépre kell. Telepítés után egy paranccsal 
 
 ## Kipróbálás és telepítés
 
-Az IskoLinux pendrive-ról telepítés nélkül is elindítható: így kipróbálhatod, működik-e a
+A Sulinux pendrive-ról telepítés nélkül is elindítható: így kipróbálhatod, működik-e a
 Wi-Fi, a hang és a kijelző, mielőtt bármit módosítanál a gépen.
 
 1. Pendrive készítése. Írd az ISO-fájlt egy legalább 8 GB-os pendrive-ra a
@@ -77,8 +77,8 @@ Wi-Fi, a hang és a kijelző, mielőtt bármit módosítanál a gépen.
 4. Telepítés. Az asztalon vagy a menüben indítsd el az *Install Debian* (Debian telepítése) programot.
    Válaszd ki a nyelvet, az időzónát és a billentyűzetet (ezek már magyarra vannak állítva),
    majd a lemezt.
-5. Lemez kiválasztása. *Lemez törlése*: az egész gépen csak IskoLinux lesz. A telepítő és a
-   rendszerindító menü a Debian nevét mutatja – ez így van rendjén, az IskoLinux Debianra épül. *Telepítés
+5. Lemez kiválasztása. *Lemez törlése*: az egész gépen csak Sulinux lesz. A telepítő és a
+   rendszerindító menü a Debian nevét mutatja – ez így van rendjén, a Sulinux Debianra épül. *Telepítés
    mellé*: a Windows megmarad, és induláskor választhatsz. Bizonytalan esetben előbb ments le
    minden fontos fájlt. A fájlrendszer alapból Btrfs: tömörít, így kevesebb helyet foglal,
    és [rendszermentés](#rendszermentés-és-visszaállítás) készíthető róla. Ezt nem kell átállítanod.
@@ -90,7 +90,7 @@ Wi-Fi, a hang és a kijelző, mielőtt bármit módosítanál a gépen.
 8. Kiegészítők telepítése – ne felejtsd ki! Az első bejelentkezés után csatlakozz az
    internetre, nyisd meg a parancssort (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>), és futtasd:
    ```sh
-   sudo iskolinux-addons
+   sudo sulinux-addons
    ```
    Ez tölti le a VS Code-ot, a PyCharmot, a Java-fejlesztőkörnyezeteket és a Microsoft-fontokat,
    amelyek nincsenek benne a telepítőben. Ha csak néhány csoport kell, azt is megadhatod.
@@ -125,16 +125,16 @@ hálózat és a hangerő.
 A Rendszerbeállítások programban állítható a háttérkép, a kijelző, a nyomtató és a
 hálózat. A pendrive-ok és telefonok automatikusan megjelennek a fájlkezelőben.
 
-Ez a leírás a telepített rendszerből is megnyitható: menü → IskoLinux súgó (internet kell hozzá).
+Ez a leírás a telepített rendszerből is megnyitható: menü → Sulinux súgó (internet kell hozzá).
 
-## Honnan tudom, hogy IskoLinux van a gépen?
+## Honnan tudom, hogy Sulinux van a gépen?
 
-Az IskoLinux egy előre beállított Debian: a rendszer neve, a telepítő, a rendszerindító
-menü és a bejelentkezőképernyő a Debian eredeti kinézetét mutatja. Hogy IskoLinuxot
+A Sulinux egy előre beállított Debian: a rendszer neve, a telepítő, a rendszerindító
+menü és a bejelentkezőképernyő a Debian eredeti kinézetét mutatja. Hogy Sulinuxot
 használsz, parancssorból tudhatod meg:
 
 ```sh
-cat /etc/iskolinux-release
+cat /etc/sulinux-release
 ```
 
 Ez kiírja a nevet, a Debian-verziót és az építés dátumát.
@@ -233,7 +233,7 @@ menüben új jelszót adhat. Egyébként kérd a rendszergazda segítségét.
 <summary>A phpMyAdmin nem nyílik meg</summary>
 
 Indítsd el újra az Adatbázis-szerver indítása programot, és várj pár másodpercet.
-Parancssorban így ellenőrizheted, fut-e: `iskolinux-database status` – mindkét sornak
+Parancssorban így ellenőrizheted, fut-e: `sulinux-database status` – mindkét sornak
 `active`-nak kell lennie.
 </details>
 
@@ -248,13 +248,13 @@ rendszergazdai jelszóval.
 
 ### Kiegészítők
 
-Néhány program nincs benne az IskoLinux telepítőjében: vagy a licence nem engedi a
+Néhány program nincs benne a Sulinux telepítőjében: vagy a licence nem engedi a
 továbbterjesztést, vagy nagy, és nem minden gépre kell. Ezeket telepítés után, a
 rendszergazda tölti le – csak akkor kerülnek a gépre, ha kiadja a parancsot:
 
 ```sh
-sudo iskolinux-addons                      # minden csoport
-sudo iskolinux-addons base java            # csak a megadott csoportok
+sudo sulinux-addons                      # minden csoport
+sudo sulinux-addons base java            # csak a megadott csoportok
 ```
 
 Nyisd meg a parancssort (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>), írd be a fenti
@@ -293,7 +293,7 @@ Egy teremnyi gépet nem kell egyenként telepíteni, és a kiegészítőket sem 
 külön letölteni. Elég egyetlen gépet elkészíteni, majd a lemezét a többire átmásolni
 (klónozni):
 
-1. Telepítsd az IskoLinuxot egy gépre (ez lesz a mintagép).
+1. Telepítsd a Sulinuxot egy gépre (ez lesz a mintagép).
 2. Telepítsd rá a szükséges [kiegészítőket](#kiegészítők) és programokat, és állíts be
    mindent, amit minden gépen látni szeretnél (felhasználók, nyomtató, háttérkép).
 3. Indítsd a mintagépet [Clonezilla](https://clonezilla.org) pendrive-ról, és ments róla
@@ -307,7 +307,7 @@ laptopok) a pendrive-os telepítést használd.
 
 ## Rendszermentés és visszaállítás
 
-Az IskoLinux a rendszer állapotát el tudja menteni, és egy elállított vagy elrontott gép pár
+A Sulinux a rendszer állapotát el tudja menteni, és egy elállított vagy elrontott gép pár
 perc alatt visszaállítható egy korábbi mentésre. A mentés a programokat és a
 beállításokat tartalmazza. A felhasználók saját fájljait (*Dokumentumok*, *Képek*, *Asztal*
 stb.) nem menti, és a visszaállítás sem módosítja őket.
@@ -332,7 +332,7 @@ Más, automatikus mentés nincs, így a mentések nem foglalják feleslegesen a 
 Parancssorból is elindítható, például egy terem összes gépén távolról:
 
 ```sh
-sudo iskolinux-snapshot "Tanév eleje"
+sudo sulinux-snapshot "Tanév eleje"
 ```
 
 ### A mentések megtekintése
@@ -385,21 +385,21 @@ Az építéshez kb. 25 GB szabad hely, az első alkalommal kb. 3 GB letöltés �
 1. Nyiss parancssort (Windowson: *PowerShell*), és lépj abba a mappába, ahová az ISO-t kéred.
 2. Másold be és futtasd ezt a parancsot:
    ```sh
-   docker run --rm --privileged --platform linux/amd64 -v iskolinux-build:/build -v "${PWD}:/host" debian:trixie bash -c "apt-get update -qq && apt-get install -y -qq curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/laszlorepassy/iskolinux/main/build.sh | bash"
+   docker run --rm --privileged --platform linux/amd64 -v sulinux-build:/build -v "${PWD}:/host" debian:trixie bash -c "apt-get update -qq && apt-get install -y -qq curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/laszlorepassy/sulinux/main/build.sh | bash"
    ```
    Linuxon, ha a Dockerhez rendszergazdai jog kell, írd elé: `sudo`.
 3. Kész. Az ISO az adott mappa `out/` almappájába kerül, mellette a `.sha256`
    ellenőrzőösszeg és az építés naplója (`build.log`). A végén a parancs azt is kiírja,
    hogyan írd [pendrive-ra](#pendrive-készítése).
 
-A parancs a GitHubon lévő legfrissebb IskoLinuxot építi. Ha a projekt letöltött (és akár
+A parancs a GitHubon lévő legfrissebb Sulinuxot építi. Ha a projekt letöltött (és akár
 módosított) mappájában futtatod, az ott lévő változatot.
 
 Újraépítéskor ugyanez a parancs; a már letöltött csomagokat nem tölti le újra. A tárolt
 csomagok törlése (hely felszabadítása vagy tiszta újrakezdés):
 
 ```sh
-docker volume rm iskolinux-build
+docker volume rm sulinux-build
 ```
 
 ## Pendrive készítése
@@ -421,13 +421,13 @@ A telepítő Btrfs-t használ (`/etc/calamares/modules/partition.conf`, `mount.c
 zstd-tömörítés, alkötetek (`@`, `@home`, `@cache`, `@log`), swap-partíció helyett zram. Ext4 és
 XFS a telepítőben továbbra is választható.
 
-A telepített gép első indulásakor az `iskolinux-snapshot-setup` szolgáltatás
+A telepített gép első indulásakor az `sulinux-snapshot-setup` szolgáltatás
 beállítja a snappert (automatikus mentés nélkül), és elkészíti a „Telepítés utáni állapot”
-mentést. A kézi mentést az `iskolinux-snapshot` szkript készíti – lásd
+mentést. A kézi mentést az `sulinux-snapshot` szkript készíti – lásd
 [Rendszermentés és visszaállítás](#rendszermentés-és-visszaállítás).
 
 ## A háttérkép
 
-A rendszer Debian marad a saját nevével és kinézetével; az IskoLinuxot az
-`/etc/iskolinux-release` fájl jelzi. A háttérkép a könyves logót, az
-*IskoLinux* feliratot és az építés dátumát mutatja.
+A rendszer Debian marad a saját nevével és kinézetével; a Sulinuxot az
+`/etc/sulinux-release` fájl jelzi. A háttérkép a könyves logót, az
+*Sulinux* feliratot és az építés dátumát mutatja.

@@ -1,0 +1,8 @@
+{
+    "KPlugin": {
+        "Id": "SulinuxTabla",
+        "Name": "Sulinux – Tábla",
+        "Authors": [ { "Name": "Sulinux" } ],
+        "License": "CC-BY-SA-4.0"
+    }
+}

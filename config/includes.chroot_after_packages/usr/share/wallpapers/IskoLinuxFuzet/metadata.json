@@ -1,8 +1,0 @@
-{
-    "KPlugin": {
-        "Id": "IskoLinuxFuzet",
-        "Name": "IskoLinux – Füzet",
-        "Authors": [ { "Name": "IskoLinux" } ],
-        "License": "CC-BY-SA-4.0"
-    }
-}

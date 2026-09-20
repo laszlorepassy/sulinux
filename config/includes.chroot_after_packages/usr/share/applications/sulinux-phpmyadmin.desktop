@@ -2,6 +2,6 @@
 Type=Application
 Name=phpMyAdmin
 Comment=Adatbázis-kezelés böngészőben (elindítja a szervert is)
-Exec=sh -c '/usr/local/bin/iskolinux-database start && xdg-open http://localhost/phpmyadmin/'
+Exec=sh -c '/usr/local/bin/sulinux-database start && xdg-open http://localhost/phpmyadmin/'
 Icon=network-server-database
 Categories=Development;Database;Education;

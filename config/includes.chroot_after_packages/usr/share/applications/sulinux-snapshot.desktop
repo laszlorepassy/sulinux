@@ -2,6 +2,6 @@
 Type=Application
 Name=Rendszermentés készítése
 Comment=A rendszer jelenlegi állapotának mentése, amelyre később vissza lehet állni
-Exec=/usr/local/bin/iskolinux-snapshot
+Exec=/usr/local/bin/sulinux-snapshot
 Icon=document-save
 Categories=System;Settings;

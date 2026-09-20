@@ -2,7 +2,7 @@
 #
 # Writes the final sources.list file
 #
-# IskoLinux: a Debian calamares-settings-debian szkriptje, de mind a négy összetevővel
+# Sulinux: a Debian calamares-settings-debian szkriptje, de mind a négy összetevővel
 # (main contrib non-free non-free-firmware), mint amivel az ISO is készül. Az eredeti csak
 # main non-free-firmware összetevőt írt, így pl. a Microsoft-fontok (contrib) nem voltak
 # telepíthetők, és a non-free csomagok nem kaptak frissítést.

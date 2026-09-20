@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=IskoLinux súgó
+Name=Sulinux súgó
 Comment=Telepítés, érettségi programok, hibaelhárítás (a GitHubon, internet kell hozzá)
-Exec=xdg-open https://github.com/laszlorepassy/iskolinux#readme
+Exec=xdg-open https://github.com/laszlorepassy/sulinux#readme
 Icon=help-browser
 Categories=Education;Documentation;

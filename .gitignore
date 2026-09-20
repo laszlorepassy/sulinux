@@ -14,6 +14,6 @@ config/bootstrap
 config/chroot
 config/common
 config/source
-config/includes.chroot_after_packages/etc/iskolinux/build.conf
+config/includes.chroot_after_packages/etc/sulinux/build.conf
 config/archives/kernel-backports.pref.*
-config/includes.chroot_after_packages/usr/share/iskolinux/images/
+config/includes.chroot_after_packages/usr/share/sulinux/images/

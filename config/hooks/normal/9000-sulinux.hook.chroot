@@ -1,13 +1,13 @@
 #!/bin/bash
-# IskoLinux testreszabás – a live-build a csomagok és az includes.chroot_after_packages
+# Sulinux testreszabás – a live-build a csomagok és az includes.chroot_after_packages
 # bemásolása után futtatja, az élő rendszer chrootjában.
 #
 # A rendszer Debian marad a saját nevével és kinézetével (telepítő, rendszerindító
-# menü, bejelentkezőképernyő stb.). Az IskoLinux csak előre telepít és beállít;
-# felismerni az /etc/iskolinux-release fájlról lehet.
+# menü, bejelentkezőképernyő stb.). A Sulinux csak előre telepít és beállít;
+# felismerni az /etc/sulinux-release fájlról lehet.
 set -euo pipefail
 
-. /etc/iskolinux/build.conf
+. /etc/sulinux/build.conf
 
 export DEBIAN_FRONTEND=noninteractive
 export LC_ALL=C.UTF-8
@@ -18,7 +18,7 @@ log "Flathub-alkalmazások"
 flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 # Csak magyar és angol fordítások (a *.Locale csomagok egyébként több GB-osak)
 flatpak config --system --set languages "hu;en"
-mapfile -t FLATPAKS < <(sed -e 's/#.*//' -e 's/[[:space:]]//g' /usr/share/iskolinux/flatpaks.list | grep -v '^$')
+mapfile -t FLATPAKS < <(sed -e 's/#.*//' -e 's/[[:space:]]//g' /usr/share/sulinux/flatpaks.list | grep -v '^$')
 if [ "${#FLATPAKS[@]}" -gt 0 ]; then
     flatpak install --system -y --noninteractive flathub "${FLATPAKS[@]}"
 fi
@@ -51,20 +51,20 @@ kw kwinrc Plugins blurEnabled false                        # elmosás ki
 kw kwinrc Plugins contrastEnabled false                    # háttér-kontraszt effekt ki
 kw kdeglobals KDE AnimationDurationFactor 0.5              # rövidebb animációk
 kw kdeglobals Translations LANGUAGE hu:en
-# A zárolóképernyőn is az IskoLinux háttérkép látszódjon
+# A zárolóképernyőn is a Sulinux háttérkép látszódjon
 kwriteconfig6 --file /etc/xdg/kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image \
-    --group General --key Image "file:///usr/share/wallpapers/IskoLinuxTabla/"
+    --group General --key Image "file:///usr/share/wallpapers/SulinuxTabla/"
 
 log "Adatbázis- és webszerver ne induljon automatikusan (RAM-takarékosság)"
 systemctl disable mariadb.service apache2.service || true
 
 # A tovább nem terjeszthető programok (VS Code, PyCharm, Microsoft-fontok…) NEM kerülnek
-# az ISO-ba: telepítés után a „sudo iskolinux-addons” paranccsal tölthetők le.
+# az ISO-ba: telepítés után a „sudo sulinux-addons” paranccsal tölthetők le.
 
-log "IskoLinux háttérképek (felirat és építési dátum)"
-BR=/usr/share/iskolinux/images
+log "Sulinux háttérképek (felirat és építési dátum)"
+BR=/usr/share/sulinux/images
 DATUM=$(date +%Y.%m.%d.)
-for pair in IskoLinuxTabla:hatter-tabla IskoLinuxFuzet:hatter-fuzet; do
+for pair in SulinuxTabla:hatter-tabla SulinuxFuzet:hatter-fuzet; do
     dir=/usr/share/wallpapers/${pair%%:*}/contents
     install -d "$dir/images"   # a git üres mappát nem tárol, ezért itt hozzuk létre
     svg=$(mktemp --suffix=.svg)
@@ -81,13 +81,13 @@ log "Rendszermentés: egy mentés a telepítés után (első induláskor), a tö
 echo 'DISABLE_APT_SNAPSHOT="yes"' >> /etc/default/snapper
 # Időzítve és indításkor sem (a snapper csomag alapból mindkettőt bekapcsolja)
 systemctl disable snapper-boot.timer snapper-timeline.timer
-systemctl enable iskolinux-snapshot-setup.service
+systemctl enable sulinux-snapshot-setup.service
 
-log "Kiadásinformáció (ellenőrzés: cat /etc/iskolinux-release)"
-cat > /etc/iskolinux-release <<EOF
+log "Kiadásinformáció (ellenőrzés: cat /etc/sulinux-release)"
+cat > /etc/sulinux-release <<EOF
 NAME="${DISTRO_NAME}"
 VERSION="${DISTRO_VERSION}"
 BASE="Debian ${DISTRO_VERSION}"
 BUILD_DATE="$(date -u +%Y-%m-%d)"
 EOF
-rm -f /etc/iskolinux/build.conf
+rm -f /etc/sulinux/build.conf

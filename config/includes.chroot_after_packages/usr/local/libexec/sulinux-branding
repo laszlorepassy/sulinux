@@ -1,16 +1,16 @@
 #!/bin/bash
-# Az IskoLinux háttérkép beállítása a felhasználónak (egyszer, első bejelentkezéskor).
+# A Sulinux háttérkép beállítása a felhasználónak (egyszer, első bejelentkezéskor).
 # A rendszer többi része a Debian eredeti kinézetét tartja meg.
 # A Plasma alapértelmezéseit csak futó plasmashellen keresztül lehet megbízhatóan
 # módosítani, ezért automatikus indításból fut.
-MARKER="${XDG_CONFIG_HOME:-$HOME/.config}/iskolinux-branding-v1"
+MARKER="${XDG_CONFIG_HOME:-$HOME/.config}/sulinux-branding-v1"
 [ -e "$MARKER" ] && exit 0
 
 read -r -d '' SCRIPT <<'JS'
 desktops().forEach(function (d) {
     d.wallpaperPlugin = "org.kde.image";
     d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
-    d.writeConfig("Image", "file:///usr/share/wallpapers/IskoLinuxTabla/");
+    d.writeConfig("Image", "file:///usr/share/wallpapers/SulinuxTabla/");
 });
 JS
 

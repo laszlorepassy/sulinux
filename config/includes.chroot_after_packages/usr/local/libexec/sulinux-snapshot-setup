@@ -2,7 +2,7 @@
 # Rendszermentés előkészítése a telepített gépen, első induláskor:
 # snapper-beállítás automatikus mentések NÉLKÜL, majd egyetlen
 # „Telepítés utáni állapot” mentés. További mentés csak kézzel készül
-# (iskolinux-snapshot). Csak Btrfs gyökér-fájlrendszeren működik.
+# (sulinux-snapshot). Csak Btrfs gyökér-fájlrendszeren működik.
 set -euo pipefail
 
 [ "$(findmnt -no FSTYPE /)" = btrfs ] || { echo "A gyökér-fájlrendszer nem Btrfs, a rendszermentés nem érhető el."; exit 0; }

@@ -2,6 +2,6 @@
 Type=Application
 Name=Adatbázis-szerver leállítása
 Comment=MariaDB és phpMyAdmin leállítása
-Exec=/usr/local/bin/iskolinux-database stop
+Exec=/usr/local/bin/sulinux-database stop
 Icon=process-stop
 Categories=Development;Database;Education;

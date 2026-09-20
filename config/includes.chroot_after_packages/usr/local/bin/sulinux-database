@@ -1,7 +1,7 @@
 #!/bin/bash
 # Adatbázis-szerver (MariaDB + Apache/phpMyAdmin) indítása és leállítása.
 # Alapból nem indulnak el a gép indulásakor, hogy gyenge gépen se foglaljanak memóriát.
-# Használat: iskolinux-database start|stop|status
+# Használat: sulinux-database start|stop|status
 set -euo pipefail
 
 action=${1:-start}
@@ -22,10 +22,10 @@ case $action in
         systemctl start mariadb apache2
         # Első indításkor az XAMPP-hoz hasonló beállítás: root jelszó nélkül,
         # csak helyi gépről (a MariaDB alapból csak 127.0.0.1-en figyel).
-        if [ ! -e /var/lib/iskolinux/database-configured ]; then
+        if [ ! -e /var/lib/sulinux/database-configured ]; then
             mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED VIA unix_socket OR mysql_native_password USING PASSWORD('');"
-            install -d /var/lib/iskolinux
-            touch /var/lib/iskolinux/database-configured
+            install -d /var/lib/sulinux
+            touch /var/lib/sulinux/database-configured
         fi
         ;;
     stop)

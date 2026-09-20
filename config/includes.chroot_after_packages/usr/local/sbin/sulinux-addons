@@ -1,11 +1,11 @@
 #!/bin/bash
-# IskoLinux – kiegészítők telepítése. Ezek nincsenek az ISO-ban: vagy a licencük nem
+# Sulinux – kiegészítők telepítése. Ezek nincsenek az ISO-ban: vagy a licencük nem
 # engedi a továbbterjesztést, vagy nagyok, és nem minden gépre kellenek. Csak akkor
 # kerülnek a gépre, ha a rendszergazda lefuttatja ezt a parancsot.
 #
 # Használat:
-#   sudo iskolinux-addons                 minden csoport
-#   sudo iskolinux-addons java            csak a megadott csoportok
+#   sudo sulinux-addons                 minden csoport
+#   sudo sulinux-addons java            csak a megadott csoportok
 #
 # Csoportok:
 #   base     VS Code + érettségin használt bővítmények (Python, Pylance, Live Server, C#),
@@ -141,8 +141,8 @@ if kell java; then
     flathub com.jetbrains.IntelliJ-IDEA-Community org.apache.netbeans
 fi
 
-install -d /var/lib/iskolinux
+install -d /var/lib/sulinux
 for cs in "${kert[@]}"; do
-    touch "/var/lib/iskolinux/addons-$cs"
+    touch "/var/lib/sulinux/addons-$cs"
 done
 echo ">>> Kész."

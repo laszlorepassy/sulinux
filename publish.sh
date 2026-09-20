@@ -1,5 +1,5 @@
 #!/bin/bash
-# Az elkészült ISO közzététele az Internet Archive-on: https://archive.org/details/iskolinux
+# Az elkészült ISO közzététele az Internet Archive-on: https://archive.org/details/sulinux
 # Minden feltöltés ugyanabba az elembe kerül, azonos fájlnévvel, így a letöltési link állandó,
 # és mindig a legfrissebb ISO-ra mutat. Csak Docker kell hozzá.
 #
@@ -9,7 +9,7 @@
 set -euo pipefail
 
 ROOT=$(cd "$(dirname "$0")" && pwd)
-ELEM=iskolinux
+ELEM=sulinux
 BEALLITAS="$HOME/.config/internetarchive"
 
 hiba() { printf '\033[1;31mHiba:\033[0m %s\n' "$*" >&2; exit 1; }
@@ -52,8 +52,8 @@ ia upload "$ELEM" "/out/$ISO" "/out/$ISO.sha256" \
     --retries 10 \
     --metadata="mediatype:software" \
     --metadata="collection:open_source_software" \
-    --metadata="title:IskoLinux" \
-    --metadata="description:Magyar nyelvű, Debian 13 alapú oktatási Linux KDE Plasma felülettel, a digitális kultúra érettségi programjaival. Leírás: https://github.com/laszlorepassy/iskolinux" \
+    --metadata="title:Sulinux" \
+    --metadata="description:Magyar nyelvű, Debian 13 alapú oktatási Linux KDE Plasma felülettel, a digitális kultúra érettségi programjaival. Leírás: https://github.com/laszlorepassy/sulinux" \
     --metadata="language:hun" \
     --metadata="subject:linux;debian;oktatás;érettségi;iskola"
 

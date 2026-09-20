@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
-<!-- IskoLinux háttérkép. Az @BUILD_DATE@ helyére építéskor a dátum kerül. -->
+<!-- Sulinux háttérkép. Az @BUILD_DATE@ helyére építéskor a dátum kerül. -->
 <defs>
 <radialGradient id="alap" cx="0.66" cy="0.5" r="0.75">
 <stop offset="0" stop-color="#16201c"/><stop offset="1" stop-color="#0d1311"/>
@@ -17,6 +17,6 @@
 <path d="M72 53L80 60L72 67" stroke="#f0c75e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 <path d="M84 71H96" stroke="#f0c75e" stroke-width="5" stroke-linecap="round" fill="none"/>
 </g>
-<text x="1302" y="640" text-anchor="middle" font-family="DejaVu Serif" font-weight="bold" font-size="76" fill="#e4ebe8">Isko<tspan fill="#5cc3ae">Linux</tspan></text>
+<text x="1302" y="640" text-anchor="middle" font-family="DejaVu Serif" font-weight="bold" font-size="76" fill="#e4ebe8">Suli<tspan fill="#5cc3ae">Linux</tspan></text>
 <text x="1302" y="690" text-anchor="middle" font-family="DejaVu Sans" font-size="22" letter-spacing="3" fill="#9aaba5">DEBIAN 13 · ÉPÍTVE: @BUILD_DATE@</text>
 </svg>

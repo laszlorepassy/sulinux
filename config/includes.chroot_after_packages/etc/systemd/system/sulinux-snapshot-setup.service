@@ -1,12 +1,12 @@
 [Unit]
-Description=IskoLinux: rendszermentés előkészítése és telepítés utáni mentés (első induláskor)
+Description=Sulinux: rendszermentés előkészítése és telepítés utáni mentés (első induláskor)
 ConditionPathExists=!/etc/snapper/configs/root
 ConditionPathExists=!/run/live/medium
 After=local-fs.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/libexec/iskolinux-snapshot-setup
+ExecStart=/usr/local/libexec/sulinux-snapshot-setup
 
 [Install]
 WantedBy=multi-user.target

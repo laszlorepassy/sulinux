@@ -1,0 +1,8 @@
+{
+    "KPlugin": {
+        "Id": "SulinuxFuzet",
+        "Name": "Sulinux – Füzet",
+        "Authors": [ { "Name": "Sulinux" } ],
+        "License": "CC-BY-SA-4.0"
+    }
+}

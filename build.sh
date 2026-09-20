@@ -1,16 +1,16 @@
 #!/bin/bash
-# IskoLinux ISO építése. Mindig Docker-konténerben (debian:trixie) fut, minden gépen ugyanazzal
+# Sulinux ISO építése. Mindig Docker-konténerben (debian:trixie) fut, minden gépen ugyanazzal
 # az egy paranccsal (Linux, macOS, Windows PowerShell), abból a mappából indítva, ahová az
 # ISO-t kéred (lásd PARANCS lent, és a README „Az ISO építése” fejezetét).
 #
 # Ha a parancsot a projekt mappájában indítod, az ott lévő (akár módosított) változat épül;
 # máshol a GitHubon lévő legfrissebb. Az ISO az indító mappa out/ almappájába kerül.
-# A letöltött csomagok az iskolinux-build Docker-kötetben megmaradnak a következő építéshez;
-# tiszta újrakezdés: docker volume rm iskolinux-build
+# A letöltött csomagok a sulinux-build Docker-kötetben megmaradnak a következő építéshez;
+# tiszta újrakezdés: docker volume rm sulinux-build
 set -euo pipefail
 
-TAROLO=https://github.com/laszlorepassy/iskolinux
-PARANCS='docker run --rm --privileged --platform linux/amd64 -v iskolinux-build:/build -v "${PWD}:/host" debian:trixie bash -c "apt-get update -qq && apt-get install -y -qq curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/laszlorepassy/iskolinux/main/build.sh | bash"'
+TAROLO=https://github.com/laszlorepassy/sulinux
+PARANCS='docker run --rm --privileged --platform linux/amd64 -v sulinux-build:/build -v "${PWD}:/host" debian:trixie bash -c "apt-get update -qq && apt-get install -y -qq curl >/dev/null && curl -fsSL https://raw.githubusercontent.com/laszlorepassy/sulinux/main/build.sh | bash"'
 
 hiba() { printf '\033[1;31mHiba:\033[0m %s\n' "$*" >&2; exit 1; }
 info() { printf '\033[1;34m>>>\033[0m %s\n' "$*"; }
@@ -36,9 +36,9 @@ if [ -f /host/build.sh ]; then
     FORRAS=/host
 else
     info "A legfrissebb változat letöltése: $TAROLO"
-    rm -rf /tmp/iskolinux
-    git clone -q --depth 1 "$TAROLO" /tmp/iskolinux
-    FORRAS=/tmp/iskolinux
+    rm -rf /tmp/sulinux
+    git clone -q --depth 1 "$TAROLO" /tmp/sulinux
+    FORRAS=/tmp/sulinux
 fi
 
 # A forrás frissen kerül a kötetbe, a letöltési gyorsítótár (cache/) marad az előző építésből
@@ -46,18 +46,18 @@ find /build -mindepth 1 -maxdepth 1 ! -name cache -exec rm -rf {} +
 tar -C "$FORRAS" --exclude=./.git --exclude=./out --exclude=./cache --exclude=./chroot \
     --exclude=./binary --exclude=./.build -cf - . | tar -C /build -xf -
 cd /build
-. config/iskolinux.conf
+. config/sulinux.conf
 
 # Az építési beállításokat a chrootban futó hook is látja
-install -d config/includes.chroot_after_packages/etc/iskolinux
-cat > config/includes.chroot_after_packages/etc/iskolinux/build.conf <<EOF
+install -d config/includes.chroot_after_packages/etc/sulinux
+cat > config/includes.chroot_after_packages/etc/sulinux/build.conf <<EOF
 DISTRO_NAME="$DISTRO_NAME"
 DISTRO_VERSION="$DISTRO_VERSION"
 EOF
 
 # A képek a repóban csak az images/ mappában vannak; a háttérképeket a hook innen készíti
-install -d config/includes.chroot_after_packages/usr/share/iskolinux/images
-cp images/*.svg config/includes.chroot_after_packages/usr/share/iskolinux/images/
+install -d config/includes.chroot_after_packages/usr/share/sulinux/images
+cp images/*.svg config/includes.chroot_after_packages/usr/share/sulinux/images/
 
 # Újabb kernel a backports tárolóból (ha be van kapcsolva)
 PREF=config/archives/kernel-backports.pref
