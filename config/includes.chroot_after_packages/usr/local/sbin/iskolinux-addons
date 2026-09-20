@@ -105,6 +105,18 @@ EOF
     done
     rm -rf "$TMP_DATA"
 
+    # Alapbeállítások: nincs Copilot-bejelentkezés és telemetria, a frissítés az aptból jön
+    BEALL_DIR=/etc/skel/.config/Code/User
+    install -d "$BEALL_DIR"
+    cat > "$BEALL_DIR/settings.json" <<'JSON'
+{
+    "chat.disableAIFeatures": true,
+    "telemetry.telemetryLevel": "off",
+    "update.mode": "none",
+    "workbench.startupEditor": "none"
+}
+JSON
+
     # Már létező felhasználóknak is odamásoljuk
     for home in /home/*; do
         [ -d "$home" ] || continue
@@ -113,6 +125,11 @@ EOF
         install -d -o "$user" -g "$user" "$home/.vscode"
         cp -a "$EXT_DIR" "$home/.vscode/"
         chown -R "$user:$user" "$home/.vscode"
+        install -d -o "$user" -g "$user" "$home/.config/Code/User"
+        [ -e "$home/.config/Code/User/settings.json" ] || {
+            cp "$BEALL_DIR/settings.json" "$home/.config/Code/User/settings.json"
+            chown "$user:$user" "$home/.config/Code/User/settings.json"
+        }
     done
 
     echo ">>> PyCharm"
