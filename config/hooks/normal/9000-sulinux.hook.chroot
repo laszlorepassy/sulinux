@@ -2,9 +2,9 @@
 # Sulinux testreszabás – a live-build a csomagok és az includes.chroot_after_packages
 # bemásolása után futtatja, az élő rendszer chrootjában.
 #
-# A rendszer Debian marad a saját nevével és kinézetével (telepítő, rendszerindító
-# menü, bejelentkezőképernyő stb.). A Sulinux csak előre telepít és beállít;
-# felismerni az /etc/sulinux-release fájlról lehet.
+# A rendszer Debian marad a saját nevével és kinézetével (rendszerindító menü,
+# bejelentkezőképernyő stb.); csak a telepítő viseli a Sulinux nevét. A Sulinux
+# egyébként csak előre telepít és beállít; felismerni az /etc/sulinux-release fájlról lehet.
 set -euo pipefail
 
 . /etc/sulinux/build.conf
@@ -75,6 +75,27 @@ for pair in SulinuxTabla:hatter-tabla SulinuxFuzet:hatter-fuzet; do
     cp "$dir/images/1920x1080.png" "$dir/screenshot.png"
     rm -f "$svg"
 done
+
+log "Telepítő: a Sulinux nevével jelenjen meg"
+# A telepítő a Debian Calamares-beállításait használja; csak a látható neveket írjuk át,
+# a telepítés menete és a telepített rendszer (Debian) változatlan marad.
+IKON=/usr/share/applications/calamares-install-debian.desktop
+sed -i -e "s|^Name=.*|Name=${DISTRO_NAME} telepítése|" \
+       -e "s|^GenericName=.*|GenericName=Rendszertelepítő|" \
+       -e "s|^Comment=.*|Comment=A ${DISTRO_NAME} telepítése a gépre|" "$IKON"
+# Az élő rendszer asztalára ezt a fájlt másolja ki a calamares-desktop-icon.desktop,
+# így az asztali ikon felirata is ez lesz.
+
+MARKA=/etc/calamares/branding/debian/branding.desc
+sed -i -E -e "s|^( *productName: *).*|\1${DISTRO_NAME}|" \
+          -e "s|^( *shortProductName: *).*|\1${DISTRO_NAME}|" \
+          -e "s|^( *versionedName: *).*|\1${DISTRO_NAME} ${DISTRO_VERSION}|" \
+          -e "s|^( *shortVersionedName: *).*|\1${DISTRO_NAME} ${DISTRO_VERSION}|" "$MARKA"
+
+# A telepítés közben mutatott dia szövege
+DIA=/etc/calamares/branding/debian/show.qml
+sed -i -e "s|Welcome to Debian GNU/Linux\.<br/>|Üdvözöl a ${DISTRO_NAME}.<br/>|" \
+       -e "s|The rest of the installation is automated and should complete in a few minutes\.|A telepítés innentől magától zajlik, néhány perc múlva kész.|" "$DIA"
 
 log "Rendszermentés: egy mentés a telepítés után (első induláskor), a többi csak kézzel"
 # Programtelepítéskor a snapper ne készítsen magától mentést.

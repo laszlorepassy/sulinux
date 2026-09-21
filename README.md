@@ -74,11 +74,11 @@ Wi-Fi, a hang és a kijelző, mielőtt bármit módosítanál a gépen.
 3. Élő rendszer. A megjelenő menüben válaszd az első sort (*Live system*). Pár perc múlva betölt a magyar
    nyelvű asztal. Az élő rendszer felhasználója `diak`, a jelszava `live`. Itt minden
    kipróbálható, de a változások újraindításkor elvesznek.
-4. Telepítés. Az asztalon vagy a menüben indítsd el az *Install Debian* (Debian telepítése) programot.
+4. Telepítés. Az asztalon vagy a menüben indítsd el a *Sulinux telepítése* programot.
    Válaszd ki a nyelvet, az időzónát és a billentyűzetet (ezek már magyarra vannak állítva),
    majd a lemezt.
-5. Lemez kiválasztása. *Lemez törlése*: az egész gépen csak Sulinux lesz. A telepítő és a
-   rendszerindító menü a Debian nevét mutatja – ez így van rendjén, a Sulinux Debianra épül. *Telepítés
+5. Lemez kiválasztása. *Lemez törlése*: az egész gépen csak Sulinux lesz. A rendszerindító
+   menü a Debian nevét mutatja – ez így van rendjén, a Sulinux Debianra épül. *Telepítés
    mellé*: a Windows megmarad, és induláskor választhatsz. Bizonytalan esetben előbb ments le
    minden fontos fájlt. A fájlrendszer alapból Btrfs: tömörít, így kevesebb helyet foglal,
    és [rendszermentés](#rendszermentés-és-visszaállítás) készíthető róla. Ezt nem kell átállítanod.
@@ -129,7 +129,7 @@ Ez a leírás a telepített rendszerből is megnyitható: menü → Sulinux súg
 
 ## Honnan tudom, hogy Sulinux van a gépen?
 
-A Sulinux egy előre beállított Debian: a rendszer neve, a telepítő, a rendszerindító
+A Sulinux egy előre beállított Debian: a telepítőn kívül a rendszer neve, a rendszerindító
 menü és a bejelentkezőképernyő a Debian eredeti kinézetét mutatja. Hogy Sulinuxot
 használsz, parancssorból tudhatod meg:
 
