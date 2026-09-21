@@ -17,6 +17,6 @@
 <path d="M72 53L80 60L72 67" stroke="#f0c75e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 <path d="M84 71H96" stroke="#f0c75e" stroke-width="5" stroke-linecap="round" fill="none"/>
 </g>
-<text x="1302" y="640" text-anchor="middle" font-family="DejaVu Serif" font-weight="bold" font-size="76" fill="#e4ebe8">Suli<tspan fill="#5cc3ae">Linux</tspan></text>
-<text x="1302" y="690" text-anchor="middle" font-family="DejaVu Sans" font-size="22" letter-spacing="3" fill="#9aaba5">DEBIAN 13 · ÉPÍTVE: @BUILD_DATE@</text>
+<text x="1302" y="640" text-anchor="middle" font-family="DejaVu Serif" font-weight="bold" font-size="76" fill="#e4ebe8">Su<tspan fill="#5cc3ae">linux</tspan></text>
+<text x="1302" y="690" text-anchor="middle" font-family="DejaVu Sans" font-size="22" letter-spacing="3" fill="#9aaba5">DEBIAN 13 · VERZIÓ: @BUILD_DATE@</text>
 </svg>

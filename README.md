@@ -429,5 +429,5 @@ mentést. A kézi mentést az `sulinux-snapshot` szkript készíti – lásd
 ## A háttérkép
 
 A rendszer Debian marad a saját nevével és kinézetével; a Sulinuxot az
-`/etc/sulinux-release` fájl jelzi. A háttérkép a könyves logót, az
-*Sulinux* feliratot és az építés dátumát mutatja.
+`/etc/sulinux-release` fájl jelzi. A háttérkép a könyves logót, a
+*Sulinux* feliratot és az építés dátumát (verziót) mutatja.
