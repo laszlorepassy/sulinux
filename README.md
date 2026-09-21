@@ -11,6 +11,10 @@
   Iskolai és otthoni PC-kre, laptopokra egyaránt telepíthető.
 </p>
 
+<p align="center">
+  <img src="images/kepernyokep.png" width="800" alt="A Sulinux asztala a könyves háttérképpel">
+</p>
+
 ---
 
 ## Tartalom
