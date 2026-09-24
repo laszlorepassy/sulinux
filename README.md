@@ -56,16 +56,24 @@ Rendszergazdáknak
 
 Az ISO-fájl (3,3 GB): **[sulinux-13-amd64.hybrid.iso](https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX)**
 
-SHA-256 ellenőrzőösszeg ([sulinux-13-amd64.hybrid.iso.sha256](https://e.pcloud.link/publink/show?code=XZEL0k7Zl71GFOwa7s8nLS3Pa3N5dkbvIjfk)):
+A letöltés ellenőrzése: lépj a letöltött fájl mappájába, és futtasd ezt a parancsot.
+Az ellenőrzőösszeg benne van, külön fájlt nem kell letölteni.
 
-```
-b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3
-```
-
-A letöltött fájl ellenőrzése (a kiírt értéknek egyeznie kell a fentivel):
-
-- Linux, macOS: `sha256sum sulinux-13-amd64.hybrid.iso`
-- Windows (PowerShell): `Get-FileHash sulinux-13-amd64.hybrid.iso`
+- Linux:
+  ```sh
+  echo "b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3  sulinux-13-amd64.hybrid.iso" | sha256sum -c
+  ```
+  Ha jó a fájl, ezt írja ki: `sulinux-13-amd64.hybrid.iso: OK`
+- macOS:
+  ```sh
+  echo "b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3  sulinux-13-amd64.hybrid.iso" | shasum -a 256 -c
+  ```
+  Ha jó a fájl, ezt írja ki: `sulinux-13-amd64.hybrid.iso: OK`
+- Windows (PowerShell):
+  ```powershell
+  (Get-FileHash sulinux-13-amd64.hybrid.iso).Hash -eq "b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3"
+  ```
+  Ha jó a fájl, ezt írja ki: `True`
 
 ## Mi van benne?
 
