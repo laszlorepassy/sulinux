@@ -15,11 +15,16 @@
   <img src="images/kepernyokep.png" width="800" alt="A Sulinux asztala a könyves háttérképpel">
 </p>
 
+<p align="center">
+  <a href="https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX"><strong>Letöltés: sulinux-13-amd64.hybrid.iso</strong></a> (3,3 GB)
+</p>
+
 ---
 
 ## Tartalom
 
 Bevezetés
+- [Letöltés](#letöltés)
 - [Mi van benne?](#mi-van-benne)
 - [Kipróbálás és telepítés](#kipróbálás-és-telepítés)
 - [Rendszerkövetelmény](#rendszerkövetelmény)
@@ -47,6 +52,21 @@ Rendszergazdáknak
 
 # Bevezetés
 
+## Letöltés
+
+Az ISO-fájl (3,3 GB): **[sulinux-13-amd64.hybrid.iso](https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX)**
+
+SHA-256 ellenőrzőösszeg ([sulinux-13-amd64.hybrid.iso.sha256](https://e.pcloud.link/publink/show?code=XZEL0k7Zl71GFOwa7s8nLS3Pa3N5dkbvIjfk)):
+
+```
+b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3
+```
+
+A letöltött fájl ellenőrzése (a kiírt értéknek egyeznie kell a fentivel):
+
+- Linux, macOS: `sha256sum sulinux-13-amd64.hybrid.iso`
+- Windows (PowerShell): `Get-FileHash sulinux-13-amd64.hybrid.iso`
+
 ## Mi van benne?
 
 | Terület | Programok |
@@ -68,7 +88,7 @@ többi pedig nagy, és nem minden gépre kell. Telepítés után egy paranccsal 
 A Sulinux pendrive-ról telepítés nélkül is elindítható: így kipróbálhatod, működik-e a
 Wi-Fi, a hang és a kijelző, mielőtt bármit módosítanál a gépen.
 
-1. Pendrive készítése. Írd az ISO-fájlt egy legalább 8 GB-os pendrive-ra a
+1. Pendrive készítése. [Töltsd le](#letöltés), majd írd az ISO-fájlt egy legalább 8 GB-os pendrive-ra a
    *balenaEtcher* programmal (Windows, macOS, Linux), lásd:
    [Pendrive készítése](#pendrive-készítése). A pendrive-on lévő adatok törlődnek.
 2. Indítás a pendrive-ról. Dugd be a pendrive-ot, kapcsold be a gépet, és rögtön nyomogasd a
