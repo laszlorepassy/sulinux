@@ -23,11 +23,44 @@ if [ "${#FLATPAKS[@]}" -gt 0 ]; then
     flatpak install --system -y --noninteractive flathub "${FLATPAKS[@]}"
 fi
 
+log "Firefox a Mozilla tárolójából (a Debian hosszan támogatott ESR-változata helyett)"
+# Ugyanaz, mint a linux-scripts tároló firefox/install-firefox.py szkriptje: a Mozilla
+# apt-tárolója ellenőrzött ujjlenyomatú kulccsal, és egy rögzítés, hogy a firefox onnan
+# jöjjön. A tárolóbeállítás a telepített gépre is átkerül, így a Firefox apt-tal frissül.
+MOZILLA_KULCS=/etc/apt/keyrings/packages.mozilla.org.asc
+MOZILLA_UJJLENYOMAT=35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3
+install -d -m 0755 /etc/apt/keyrings
+curl -fsSL https://packages.mozilla.org/apt/repo-signing-key.gpg -o "$MOZILLA_KULCS"
+chmod 644 "$MOZILLA_KULCS"
+GNUPGHOME=$(mktemp -d)
+if ! GNUPGHOME="$GNUPGHOME" gpg --show-keys --with-colons "$MOZILLA_KULCS" \
+       | grep -q "^fpr:::::::::${MOZILLA_UJJLENYOMAT}:"; then
+    echo "A Mozilla aláírókulcsának ujjlenyomata nem egyezik, a Firefox nem települ." >&2
+    exit 1
+fi
+rm -rf "$GNUPGHOME"
+cat > /etc/apt/sources.list.d/mozilla.sources <<EOF
+Types: deb
+URIs: https://packages.mozilla.org/apt
+Suites: mozilla
+Components: main
+Signed-By: $MOZILLA_KULCS
+EOF
+cat > /etc/apt/preferences.d/mozilla <<'EOF'
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+EOF
+apt-get update
+apt-get install -y firefox firefox-l10n-hu
+
 log "Fölösleges, csak ajánlásként behúzott csomagok eltávolítása (ISO-méret)"
 # Noto *-extra: ritka írásrendszerek és betűváltozatok (~600 MB; a Noto alapfontok maradnak),
-# Marvell Prestera: hálózati kapcsolók firmware-e, fortune: szöveges idézetgyűjtemény
+# Marvell Prestera: hálózati kapcsolók firmware-e, fortune: szöveges idézetgyűjtemény,
+# Firefox ESR (a magyar nyelvcsomagja húzza be) és Konqueror: a böngésző a Firefox
 FOLOSLEGES=(fonts-noto-extra fonts-noto-cjk-extra fonts-noto-ui-extra fonts-noto-unhinted
-            firmware-marvell-prestera fortune-mod fortunes-debian-hints)
+            firmware-marvell-prestera fortune-mod fortunes-debian-hints
+            firefox-esr firefox-esr-l10n-hu konqueror)
 mapfile -t TOROLNI < <(dpkg-query -W -f '${db:Status-Status} ${Package}\n' "${FOLOSLEGES[@]}" 2>/dev/null \
                        | awk '$1 == "installed" { print $2 }')
 if [ "${#TOROLNI[@]}" -gt 0 ]; then
@@ -51,6 +84,11 @@ kw kwinrc Plugins blurEnabled false                        # elmosás ki
 kw kwinrc Plugins contrastEnabled false                    # háttér-kontraszt effekt ki
 kw kdeglobals KDE AnimationDurationFactor 0.5              # rövidebb animációk
 kw kdeglobals Translations LANGUAGE hu:en
+# Alapértelmezett böngésző a Firefox: a tálcán ez látszik, és ez nyitja meg a linkeket
+kw kdeglobals General BrowserApplication firefox.desktop
+for tipus in text/html application/xhtml+xml x-scheme-handler/http x-scheme-handler/https; do
+    kw mimeapps.list "Default Applications" "$tipus" firefox.desktop
+done
 # A zárolóképernyőn is a Sulinux háttérkép látszódjon
 kwriteconfig6 --file /etc/xdg/kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image \
     --group General --key Image "file:///usr/share/wallpapers/SulinuxTabla/"
@@ -90,7 +128,10 @@ MARKA=/etc/calamares/branding/debian/branding.desc
 sed -i -E -e "s|^( *productName: *).*|\1${DISTRO_NAME}|" \
           -e "s|^( *shortProductName: *).*|\1${DISTRO_NAME}|" \
           -e "s|^( *versionedName: *).*|\1${DISTRO_NAME} ${DISTRO_VERSION}|" \
-          -e "s|^( *shortVersionedName: *).*|\1${DISTRO_NAME} ${DISTRO_VERSION}|" "$MARKA"
+          -e "s|^( *shortVersionedName: *).*|\1${DISTRO_NAME} ${DISTRO_VERSION}|" \
+          -e "s|^sidebar: *.*|sidebar: qml|" "$MARKA"
+# A QML-oldalsáv (calamares-sidebar.qml a branding mappában) bal alul a Névjegy gomb helyett
+# a Sulinux nevét mutatja
 
 # A telepítés közben mutatott dia szövege
 DIA=/etc/calamares/branding/debian/show.qml

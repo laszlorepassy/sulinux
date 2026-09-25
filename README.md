@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <a href="https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX"><strong>Letöltés: sulinux-13-amd64.hybrid.iso</strong></a> (3,3 GB)
+  <a href="https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX"><strong>Letöltés: sulinux-13-amd64.hybrid.iso</strong></a> (3,5 GB)
 </p>
 
 ---
@@ -54,24 +54,24 @@ Rendszergazdáknak
 
 ## Letöltés
 
-Az ISO-fájl (3,3 GB): **[sulinux-13-amd64.hybrid.iso](https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX)**
+Az ISO-fájl (3,5 GB): **[sulinux-13-amd64.hybrid.iso](https://e.pcloud.link/publink/show?code=XZB40k7ZaTKwKJg8Rq8S7KQmVRCb08Jc5yWX)**
 
 A letöltés ellenőrzése: lépj a letöltött fájl mappájába, és futtasd ezt a parancsot.
 Az ellenőrzőösszeg benne van, külön fájlt nem kell letölteni.
 
 - Linux:
   ```sh
-  echo "b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3  sulinux-13-amd64.hybrid.iso" | sha256sum -c
+  echo "841eb03a9edb0cfc39857b5526c38f0559509d968e246599db4282948098ac2f  sulinux-13-amd64.hybrid.iso" | sha256sum -c
   ```
   Ha jó a fájl, ezt írja ki: `sulinux-13-amd64.hybrid.iso: OK`
 - macOS:
   ```sh
-  echo "b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3  sulinux-13-amd64.hybrid.iso" | shasum -a 256 -c
+  echo "841eb03a9edb0cfc39857b5526c38f0559509d968e246599db4282948098ac2f  sulinux-13-amd64.hybrid.iso" | shasum -a 256 -c
   ```
   Ha jó a fájl, ezt írja ki: `sulinux-13-amd64.hybrid.iso: OK`
 - Windows (PowerShell):
   ```powershell
-  (Get-FileHash sulinux-13-amd64.hybrid.iso).Hash -eq "b548e6936e71e27c6eca0d541c3be6339b4e0e9b4395b2ceea4451f9853860a3"
+  (Get-FileHash sulinux-13-amd64.hybrid.iso).Hash -eq "841eb03a9edb0cfc39857b5526c38f0559509d968e246599db4282948098ac2f"
   ```
   Ha jó a fájl, ezt írja ki: `True`
 
@@ -463,3 +463,5 @@ mentést. A kézi mentést az `sulinux-snapshot` szkript készíti – lásd
 A rendszer Debian marad a saját nevével és kinézetével; a Sulinuxot az
 `/etc/sulinux-release` fájl jelzi. A háttérkép a könyves logót, a
 *Sulinux* feliratot és az építés dátumát (verziót) mutatja.
+A pendrive indítómenüje (`images/hatter-indito.svg`) ugyanezt a hátteret mutatja, a
+Debian (live-build) eredeti menüjével.

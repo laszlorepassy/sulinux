@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<!-- A pendrive indítómenüjének háttere (a táblás háttérkép 4:3-as változata). A live-build
+     800x600-as (GRUB, UEFI) és 640x480-as (syslinux, BIOS) képet készít belőle, és a saját
+     menüjét rajzolja rá; a menü a kép alsó felébe kerül, ezért a logó a felső harmadban van. -->
+<defs>
+<radialGradient id="alap" cx="0.5" cy="0.4" r="0.8">
+<stop offset="0" stop-color="#16201c"/><stop offset="1" stop-color="#0d1311"/>
+</radialGradient>
+<pattern id="kockas" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0V20" fill="none" stroke="#1b2622" stroke-width="1"/>
+</pattern>
+</defs>
+<rect width="800" height="600" fill="url(#alap)"/>
+<rect width="800" height="600" fill="url(#kockas)"/>
+<g transform="translate(328 39) scale(1.2)">
+<path d="M57 36C45 28 29 26 14 30V94C29 90 45 92 57 100Z" fill="#5cc3ae"/>
+<path d="M63 36C75 28 91 26 106 30V94C91 90 75 92 63 100Z" fill="#5cc3ae"/>
+<path d="M24 50H47M24 60H47M24 70H40" stroke="#111816" stroke-opacity="0.6" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<path d="M72 53L80 60L72 67" stroke="#f0c75e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M84 71H96" stroke="#f0c75e" stroke-width="5" stroke-linecap="round" fill="none"/>
+</g>
+<text x="400" y="218" text-anchor="middle" font-family="DejaVu Serif" font-weight="bold" font-size="42" fill="#e4ebe8">Su<tspan fill="#5cc3ae">linux</tspan></text>
+</svg>

@@ -1,0 +1,9 @@
+# Ezek a csomagok nem kerülnek az élő rendszerbe, hanem az ISO csomagtárolójába (pool/), hogy
+# a telepítő (Calamares) internet nélkül is megtalálja őket. UEFI-s gépen a grub-efi-t
+# telepíti, titkosított lemeznél a cryptsetupot is. (A BIOS-os grub-pc ütközik a grub-efi-vel,
+# ezért külön listában van: a live-build listánként egyben tölti le a csomagokat.)
+grub-efi
+grub-efi-amd64
+cryptsetup
+cryptsetup-initramfs
+keyutils

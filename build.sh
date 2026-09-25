@@ -59,6 +59,10 @@ EOF
 install -d config/includes.chroot_after_packages/usr/share/sulinux/images
 cp images/*.svg config/includes.chroot_after_packages/usr/share/sulinux/images/
 
+# A pendrive indítómenüjének háttérképe: a live-build a saját menüjét erre rajzolja
+install -d config/bootloaders
+cp images/hatter-indito.svg config/bootloaders/splash.svg
+
 # Újabb kernel a backports tárolóból (ha be van kapcsolva)
 PREF=config/archives/kernel-backports.pref
 install -d config/archives

@@ -33,7 +33,9 @@ ffmpegthumbs
 kdegraphics-thumbnailers
 kdeconnect
 skanlite
-firefox-esr
+# Böngésző: a Firefox a Mozilla tárolójából (lásd a hookot), nem a Debian ESR-változata
+# A Debian eredeti kinézete a telepített gép rendszerindító menüjében (GRUB-háttérkép)
+desktop-base
 network-manager
 pipewire-audio
 cups
